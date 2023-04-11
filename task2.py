@@ -60,6 +60,6 @@ if __name__ == '__main__':
 
     print("result is: ")
     print(df.head(50))
-    df.to_csv('shit.csv')
+    df.to_csv('test.csv')
 
 
