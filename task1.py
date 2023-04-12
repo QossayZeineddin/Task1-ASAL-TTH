@@ -46,14 +46,15 @@ if __name__ == '__main__':
 
 
     name = input("Plz enter the name of the file! : ")
-    if len(name) == 0:
+
+    while len(name) == 0:
         print("plz enter a the name ")
         name = input("Plz enter the name of the file! : ")
 
     data_from_file = read_from_file(name)
     if data_from_file == False:
         print("py")
-        exec
+        exit(0)
     else:
         # print(data_from_file)
         tokens = individual_words(data_from_file)
