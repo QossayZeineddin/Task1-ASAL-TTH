@@ -15,14 +15,12 @@ def read_from_file(name):
             contents = file.read()
             if len(contents) == 0:
                 print("file is empty!!")
-                return False
-            #print(contents)
+                return None
             return contents
 
     except FileNotFoundError:
         print("file not found")
-        return False
-
+        return None
 
 def individual_words(text):
     #import nltk
@@ -44,15 +42,14 @@ def overall_sentiment_score(tokens):
 
 if __name__ == '__main__':
 
-
-    name = input("Plz enter the name of the file! : ")
-
-    while len(name) == 0:
-        print("plz enter a the name ")
-        name = input("Plz enter the name of the file! : ")
-
+    while True:
+        name = input("Please enter the name of the file: ")
+        if not name:
+            print("Please enter a valid filename.")
+        else:
+            break
     data_from_file = read_from_file(name)
-    if data_from_file == False:
+    if not data_from_file:
         print("py")
         exit(0)
     else:
