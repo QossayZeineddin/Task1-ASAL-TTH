@@ -1,5 +1,4 @@
 
-
 def read_from_file(name):
     import pandas as pd
     try:
@@ -8,14 +7,14 @@ def read_from_file(name):
         # Check if dataframe is empty
         if df.empty:
             print("File is empty")
-            return False
+            return None
         else:
             #print(df.head())
             return df
 
     except FileNotFoundError:
-        print("File not found")
-        return False
+        print("\nFile not found")
+        return None
 
 
 def filtering_by_partition(df , x1 , x2):
@@ -32,18 +31,21 @@ def filtering_by_gender(df , gender):
 
 def search_by_name(df , name):
     df = df[ df['name'].str.contains(name)]
-    df.to_csv('shit.csv')
+    #df.to_csv('shit.csv')
     return df
 
 if __name__ == '__main__':
 
-    name = input("Plz enter the name of the file! : ")
-    while len(name) == 0:
-        print("plz enter a the name ")
+
+    while True:
         name = input("Plz enter the name of the file! : ")
+        if not name:
+            print("Please enter a valid filename.")
+        else:
+            break
 
     df = read_from_file(name)
-    if df == False:
+    if not df:
         print("py")
         exit(0)
 
